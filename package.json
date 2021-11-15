@@ -1,0 +1,30 @@
+{
+  "name": "dmonesi-utils",
+  "version": "1.0.0",
+  "description": "A single repository holding many sub packages to host utilities I use daily.",
+  "main": "index.js",
+  "scripts": {
+    "build:quick-logger" : "cd quick-logger && npm run build",
+    "build:types" : "cd types && npm run build",
+    "build:async" : "cd async && npm run build",
+    "build:aws-amplify" : "cd aws-amplify && npm run build",
+    "build:aws-backend" : "cd ws-backend && npm run build",
+    "build:all": "npm run build:types && npm run build:async && npm run build:aws-amplify && npm run build:aws-backend",
+    "install:quick-logger" : "cd quick-logger && npm install",
+    "install:types" : "cd types && npm install",
+    "install:async" : "cd async && npm install",
+    "install:aws-amplify" : "cd aws-amplify && npm install",
+    "install:aws-backend" : "cd aws-backend && npm install",
+    "install:all": "npm run install:types && npm run install:async && npm run install:aws-amplify && npm run install:aws-backend"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/monesidn/dmonesi-utils.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/monesidn/dmonesi-utils/issues"
+  },
+  "homepage": "https://github.com/monesidn/dmonesi-utils#readme"
+}

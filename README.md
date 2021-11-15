@@ -1,3 +1,6 @@
-This repository contains multiple packages providing common Typescript utilities for miscellaneous project. 
+# dmonesi-utils
+A single repository holding many sub packages to host utilities I use daily. This repository contains multiple packages providing common Typescript utilities for miscellaneous project and environments. 
 
-Packages are splitted so they have minimum impact on project dependencies. Example: aws-amplify and aws-mobx-amplify are two different packages because the latter also requires mobx to a be available but the former not. 
+I organized packages to have minimum impact on project dependencies. This means that `dmonesi-utils.aws-amplify` - depending on package `aws-amplify` from NPM - and `aws-mobx-amplify` - depending on package `aws-amplify` and `mobx` from NPM - are two kept aside.
+
+This is still a very early stage project, I will update it in the future.
