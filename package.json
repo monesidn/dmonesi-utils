@@ -9,7 +9,7 @@
     "prestart": "npm run build",
     "start": "node dist/index.js",
     "clean": "rimraf dist",
-    "prepublishOnly": "npm run build && npm run test",
+    "prepare": "npm run build",
     "gen-docs": "typedoc --out docs src && echo \"\" > docs/.nojekyll"
   },
   "repository": {
