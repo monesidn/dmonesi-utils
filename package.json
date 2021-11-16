@@ -2,7 +2,6 @@
   "name": "dmonesi-utils",
   "version": "1.0.0",
   "description": "A single repository holding many utilities I use daily.",
-  "main": "index.js",
   "scripts": {
     "test": "jest",
     "build": "tsc",
@@ -40,41 +39,49 @@
     "aws-amplify": "^4.3.6",
     "mobx": "^6.3.7"
   },
+  "main": "./dist/index.js",
   "exports": {
     "./amplify": {
       "types": "./dist/amplify/index.d.ts",
       "import": "./dist/amplify/index.js",
-      "require": "./dist/amplify/index.js"
+      "require": "./dist/amplify/index.js",
+      "default": "./dist/amplify/index.js"
     },
     "./async": {
       "types": "./dist/async/index.d.ts",
       "import": "./dist/async/index.js",
-      "require": "./dist/async/index.js"
+      "require": "./dist/async/index.js",
+      "default": "./dist/async/index.js"
     },
     "./backend/dynamodb": {
       "types": "./dist/backend/dynamodb/index.d.ts",
       "import": "./dist/backend/dynamodb/index.js",
-      "require": "./dist/backend/dynamodb/index.js"
+      "require": "./dist/backend/dynamodb/index.js",
+      "default": "./dist/backend/dynamodb/index.js"
     },
     "./backend/lambda": {
       "types": "./dist/backend/lambda/index.d.ts",
       "import": "./dist/backend/lambda/index.js",
-      "require": "./dist/backend/lambda/index.js"
+      "require": "./dist/backend/lambda/index.js",
+      "default": "./dist/backend/lambda/index.js"
     },
     "./backend/streams": {
       "types": "./dist/backend/streams/index.d.ts",
       "import": "./dist/backend/streams/index.js",
-      "require": "./dist/backend/streams/index.js"
+      "require": "./dist/backend/streams/index.js",
+      "default": "./dist/backend/streams/index.js"
     },
     "./logger": {
       "types": "./dist/logger/index.d.ts",
       "import": "./dist/logger/index.js",
-      "require": "./dist/logger/index.js"
+      "require": "./dist/logger/index.js",
+      "default": "./dist/logger/index.js"
     },
     "./types": {
       "types": "./dist/types/index.d.ts",
       "import": "./dist/types/index.js",
-      "require": "./dist/types/index.js"
+      "require": "./dist/types/index.js",
+      "default": "./dist/types/index.js"
     }
   }
 }
