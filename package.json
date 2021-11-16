@@ -1,21 +1,16 @@
 {
   "name": "dmonesi-utils",
   "version": "1.0.0",
-  "description": "A single repository holding many sub packages to host utilities I use daily.",
+  "description": "A single repository holding many utilities I use daily.",
   "main": "index.js",
   "scripts": {
-    "build:quick-logger" : "cd quick-logger && npm run build",
-    "build:types" : "cd types && npm run build",
-    "build:async" : "cd async && npm run build",
-    "build:aws-amplify" : "cd aws-amplify && npm run build",
-    "build:aws-backend" : "cd ws-backend && npm run build",
-    "build:all": "npm run build:types && npm run build:async && npm run build:aws-amplify && npm run build:aws-backend",
-    "install:quick-logger" : "cd quick-logger && npm install",
-    "install:types" : "cd types && npm install",
-    "install:async" : "cd async && npm install",
-    "install:aws-amplify" : "cd aws-amplify && npm install",
-    "install:aws-backend" : "cd aws-backend && npm install",
-    "install:all": "npm run install:types && npm run install:async && npm run install:aws-amplify && npm run install:aws-backend"
+    "test": "jest",
+    "build": "tsc",
+    "prestart": "npm run build",
+    "start": "node dist/index.js",
+    "clean": "rimraf dist",
+    "prepublishOnly": "npm run build && npm run test",
+    "gen-docs": "typedoc --out docs src && echo \"\" > docs/.nojekyll"
   },
   "repository": {
     "type": "git",
@@ -26,5 +21,30 @@
   "bugs": {
     "url": "https://github.com/monesidn/dmonesi-utils/issues"
   },
-  "homepage": "https://github.com/monesidn/dmonesi-utils#readme"
+  "homepage": "https://github.com/monesidn/dmonesi-utils#readme",
+  "devDependencies": {
+    "@types/jest": "^27.0.2",
+    "@typescript-eslint/eslint-plugin": "^5.3.1",
+    "@typescript-eslint/parser": "^5.3.1",
+    "eslint": "^8.2.0",
+    "eslint-config-google": "^0.14.0",
+    "eslint-plugin-tsdoc": "^0.2.14",
+    "jest": "^27.3.1",
+    "rimraf": "^3.0.2",
+    "ts-jest": "^27.0.7",
+    "typedoc": "^0.22.8",
+    "typescript": "^4.4.4"
+  },
+  "dependencies": {
+    "@aws-sdk/client-dynamodb": "^3.41.0",
+    "aws-amplify": "^4.3.6",
+    "mobx": "^6.3.7"
+  },
+  "exports": {
+    "./amplify": "./dist/amplify",
+    "./async": "./dist/async",
+    "./backend": "./dist/backend",
+    "./logger": "./dist/logger",
+    "./types": "./dist/types"
+  }
 }
