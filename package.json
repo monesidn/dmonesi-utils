@@ -43,7 +43,9 @@
   "exports": {
     "./amplify": "./dist/amplify",
     "./async": "./dist/async",
-    "./backend": "./dist/backend",
+    "./backend/dynamodb": "./dist/backend/dynamodb",
+    "./backend/lambda": "./dist/backend/lambda",
+    "./backend/streams": "./dist/backend/streams",
     "./logger": "./dist/logger",
     "./types": "./dist/types"
   }
