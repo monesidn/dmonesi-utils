@@ -1,1 +1,1 @@
-export * from './AppSyncStandardRequest';
+export * from './AppSyncStandardEvent';

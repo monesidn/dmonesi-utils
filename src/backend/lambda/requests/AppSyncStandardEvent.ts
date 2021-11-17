@@ -62,7 +62,7 @@ export interface AppSyncInfo {
 }
 
 
-export interface AppSyncStandardRequestContext<Arguments> {
+export interface AppSyncStandardEventContext<Arguments> {
     /**
      * Map containing the endpoint arguments.
      */
@@ -123,7 +123,7 @@ export interface AppSyncStandardRequestContext<Arguments> {
 /**
  * Standard AppSync request typing when a lambda is involved.
  */
-export interface AppSyncStandardRequest<Arguments = Record<string, string | number | boolean>> {
+export interface AppSyncStandardEvent<Arguments = Record<string, string | number | boolean>> {
 
     /**
      * Field containing the invoked field. While not strictly required this
@@ -134,5 +134,5 @@ export interface AppSyncStandardRequest<Arguments = Record<string, string | numb
     /**
      * Where the real info are stored.
      */
-    context: AppSyncStandardRequestContext<Arguments>;
+    context: AppSyncStandardEventContext<Arguments>;
 }
