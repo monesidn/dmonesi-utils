@@ -70,6 +70,36 @@ class LoggerManager {
         }
     }
 
+    /**
+     * Parse and apply a string containing log levels. This method is useful when
+     * using the API in a context that works with environment variables.
+     * The string must be in the following format:
+     * `CATEGORY1:LEVEL1;CATEGORY2:LEVEL2;...`
+     * The category "default" will be the default logger manager level.
+     * EXAMPLE:
+     * `default:INFO;app.service.subservice:DEBUG;app.anotherservice.subservice:DEBUG`
+     * @param levels -
+     */
+    public parseLevelFromString(levels: string) {
+        if (!levels)
+            return;
+
+        const categs = levels.split(';');
+        let updated = 0;
+        for (const cat of categs) {
+            const [category, level] = cat.split(':');
+            if (!category || !level) {
+                console.error(`Ignoring category specification ${cat}`);
+                continue;
+            }
+            this.configureLevel(category, level.toUpperCase() as LogLevel);
+            updated++;
+        }
+        if (updated > 0) {
+            this.updateLoggers();
+        }
+    }
+
     public hijackConsole() {
         const cat = 'app.console';
         console.log(`Console is being hijacked. If you can't find ` +

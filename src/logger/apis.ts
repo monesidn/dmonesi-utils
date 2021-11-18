@@ -2,11 +2,11 @@
  * Possible log levels.
  */
 export enum LogLevel {
-    OFF,
-    ERROR,
-    WARN,
-    DEBUG,
-    TRACE
+    OFF = 'OFF',
+    ERROR = 'ERROR',
+    WARN = 'WARN',
+    DEBUG = 'DEBUG',
+    TRACE = 'TRACE',
 };
 
 /**
