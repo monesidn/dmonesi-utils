@@ -26,7 +26,7 @@ export interface AppSyncIdentityInfo {
     sourceIp: string[];
 
     /**
-     * ???
+     * The UUID of the authenticated user.
      */
     sub: string;
 

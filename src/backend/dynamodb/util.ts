@@ -9,7 +9,13 @@ export type DynamoDBRecord = Record<string, AttributeValue>;
  * @param value - The value to wrap
  * @returns A javascript object which is the wrapped value representation.
  */
-export const toDynamoDBJson = (value: any) => {
+export function toDynamoDBJson(value: null): AttributeValue.NULLMember
+export function toDynamoDBJson(value: boolean): AttributeValue.BOOLMember
+export function toDynamoDBJson(value: string): AttributeValue.SMember
+export function toDynamoDBJson(value: number): AttributeValue.NMember
+export function toDynamoDBJson(value: object): Record<string, AttributeValue>
+export function toDynamoDBJson(value: undefined): undefined
+export function toDynamoDBJson(value: any) {
     if (!value)
         return undefined;
 
@@ -23,9 +29,9 @@ export const toDynamoDBJson = (value: any) => {
         return { 'BOOL': value };
 
     if (typeof value === 'object') {
-        const result: Record<string, any> = {};
+        const result: Record<string, AttributeValue> = {};
         for (const p of Object.keys(value)) {
-            result[p] = exports.toDynamoDBJson(value[p]);
+            result[p] = toDynamoDBJson(value[p]);
         }
         return result;
     }
