@@ -42,7 +42,7 @@ export function toDynamoDBJson(value: any) {
  * @param value - The wrapped value.
  * @returns The unwrapped value as a javascript value.
  */
-exports.unwrapDynamoDBValue = (value: any) => {
+export const unwrapDynamoDBValue = (value: any) => {
     if (!value)
         return undefined;
 
@@ -54,6 +54,10 @@ exports.unwrapDynamoDBValue = (value: any) => {
         return +value.N;
     if (value.B)
         return !!value.B;
+    if (value.SS)
+        return value.SS;
+    if (value.L)
+        return value.L;
 
     throw new Error(`Don't know how to unwrap DynamoDB value ${JSON.stringify(value)}`);
 };
@@ -63,13 +67,13 @@ exports.unwrapDynamoDBValue = (value: any) => {
  * @param value - The DynamoDB json.
  * @returns A Javascript object.
  */
-exports.unwrapDynamoDBJson = (value: any) => {
+export const unwrapDynamoDBJson = (value: any) => {
     if (!value)
         return undefined;
 
     const result: Record<string, any> = {};
     for (const i of Object.keys(value)) {
-        result[i] = exports.unwrapDynamoDBValue(value[i]);
+        result[i] = unwrapDynamoDBValue(value[i]);
     }
     return result;
 };
@@ -80,7 +84,7 @@ exports.unwrapDynamoDBJson = (value: any) => {
  * @param ownerId - Optional convenience parameter which adds a condition on the ownerId attribute.
  * @returns An object containing fields that needs to be included in the document.
  */
-exports.constructUpdate = (updateObject: Record<string, any>, ownerId?: string) => {
+export const constructUpdate = (updateObject: Record<string, any>, ownerId?: string) => {
     const expressionBuilder = [];
     const conditionBuilder = [];
     const attributeValues: Record<string, any> = {};
@@ -90,11 +94,11 @@ exports.constructUpdate = (updateObject: Record<string, any>, ownerId?: string) 
         if (!value) continue;
 
         expressionBuilder.push(`${key} = :${key}`);
-        attributeValues[`:${key}`] = exports.toDynamoDBJson(value);
+        attributeValues[`:${key}`] = toDynamoDBJson(value);
     }
 
     if (ownerId) {
-        attributeValues[`:ownerId`] = exports.toDynamoDBJson(ownerId);
+        attributeValues[`:ownerId`] = toDynamoDBJson(ownerId);
         conditionBuilder.push('ownerId = :ownerId');
     }
 
