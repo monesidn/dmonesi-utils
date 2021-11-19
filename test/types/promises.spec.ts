@@ -1,4 +1,4 @@
-import { isPromise, toPromise } from '../src/promises';
+import { isPromise, toPromise } from '../../src/types';
 import { describe, test, expect } from '@jest/globals';
 
 describe('isPromise() - utility', () => {

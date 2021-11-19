@@ -1,4 +1,4 @@
-import { hasMember, hasMethod } from '../src/members';
+import { hasMember, hasMethod } from '../../src/types';
 import { describe, test, expect } from '@jest/globals';
 
 describe('hasMember() - utility', () => {

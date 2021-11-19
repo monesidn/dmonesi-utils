@@ -1,16 +1,14 @@
 import { DynamoDBClient, AttributeValue } from '@aws-sdk/client-dynamodb';
 import { QueryCommand, QueryCommandInput, QueryCommandOutput } from '@aws-sdk/client-dynamodb';
-import { DynamoDBRecord } from './util';
-
 
 /**
  * Utility to easily perform DynamoDB queries with paginations.
  */
 export class PaginatedQuery {
     private _hasNext = true;
-    private _LastEvaluatedKey?: DynamoDBRecord;
+    private _LastEvaluatedKey?: Record<string, AttributeValue>;
     private _lastResult?: QueryCommandOutput;
-    private _lastPage?: DynamoDBRecord[];
+    private _lastPage?: Record<string, AttributeValue>[];
     private _completed = false;
 
     constructor(
