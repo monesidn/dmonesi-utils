@@ -10,6 +10,7 @@ export function fromDynamoDBType(value: undefined) : undefined
 export function fromDynamoDBType(value: AttributeValue.LMember) : any[]
 export function fromDynamoDBType(value: AttributeValue.SSMember) : string[]
 export function fromDynamoDBType(value: AttributeValue.NSMember) : number[]
+export function fromDynamoDBType(value: AttributeValue) : any
 export function fromDynamoDBType(value: AttributeValue | undefined) : any {
     if (!value)
         return undefined;
