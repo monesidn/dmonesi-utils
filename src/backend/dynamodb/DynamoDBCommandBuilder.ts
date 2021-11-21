@@ -76,6 +76,11 @@ export class DynamoDBCommandBuilder {
         return this;
     }
 
+    withRawAttributeValue(name: string, value: AttributeValue) {
+        this.addAttributeValue(name, value);
+        return this;
+    }
+
     withSimpleAttributeValue(name: string, value: any) {
         this.addAttributeValue(name, toDynamoDBValue(value));
         return this;
