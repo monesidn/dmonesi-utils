@@ -7,6 +7,7 @@ export class DynamoDBCommandBuilder {
     table: string = '';
     index?: string;
     keyCriteria: Record<string, AttributeValue> = {};
+    limit?: number;
 
     filterExpression: string[] = [];
     conditionExpression: string[] = [];
@@ -108,6 +109,10 @@ export class DynamoDBCommandBuilder {
         return this;
     }
 
+    withLimit(limit: number) {
+        this.limit = limit;
+    }
+
     havingVersion(version: number) {
         this.addCondition('#version = :version');
         this.withSimpleAttributeValue(':version', version);
@@ -135,7 +140,7 @@ export class DynamoDBCommandBuilder {
 
     toQuery(): QueryCommandInput {
         const { expression, attributeNames, attributeValues } = this.keyCriteriaToExpression();
-        return {
+        const result: QueryCommandInput = {
             TableName: this.table,
             KeyConditionExpression: expression,
             FilterExpression: this.assembleExpression(this.filterExpression),
@@ -149,5 +154,10 @@ export class DynamoDBCommandBuilder {
             },
             IndexName: (this.index || '')
         };
+
+        if (this.limit)
+            result.Limit = this.limit;
+
+        return result;
     }
 }
