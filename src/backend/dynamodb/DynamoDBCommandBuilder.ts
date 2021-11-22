@@ -111,6 +111,7 @@ export class DynamoDBCommandBuilder {
 
     withLimit(limit: number) {
         this.limit = limit;
+        return this;
     }
 
     havingVersion(version: number) {
