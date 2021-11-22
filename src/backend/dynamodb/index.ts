@@ -1,4 +1,4 @@
 export * from './PaginatedQuery';
-export * from './fromDynamoDBType';
+export * from './fromDynamoDB';
 export * from './toDynamoDBTypes';
 export * from './DynamoDBCommandBuilder';

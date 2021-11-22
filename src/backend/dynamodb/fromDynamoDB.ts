@@ -40,3 +40,12 @@ export function fromDynamoDBType(value: AttributeValue | undefined) : any {
 
     throw new Error(`Don't know how to unwrap DynamoDB value ${JSON.stringify(value)}`);
 }
+
+
+export const fromDynamoDBObject = (src: any) => {
+    const result: any = {};
+    for (const k of Object.keys(src)) {
+        result[k] = fromDynamoDBObject(src[k]);
+    }
+    return result;
+};
