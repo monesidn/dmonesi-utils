@@ -13,7 +13,7 @@ export interface EventWithField {
  * @param targetApis - One or more object where to look for the method.
  * @returns
  */
-export const createLambdaEntrypoint = (targetApis: any[]) => {
+export const createLambdaEntrypoint = (...targetApis: any[]) => {
     return async (event: EventWithField, ctx: any) => {
         let method: any;
         let object: any;
