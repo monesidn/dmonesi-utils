@@ -8,6 +8,7 @@ export class DynamoDBCommandBuilder {
     index?: string;
     keyCriteria: Record<string, AttributeValue> = {};
     limit?: number;
+    nextToken?: any;
 
     filterExpression: string[] = [];
     conditionExpression: string[] = [];
@@ -114,6 +115,11 @@ export class DynamoDBCommandBuilder {
         return this;
     }
 
+    withNextToken(nextToken: any) {
+        this.nextToken = nextToken;
+        return this;
+    }
+
     havingVersion(version: number) {
         this.addCondition('#version = :version');
         this.withSimpleAttributeValue(':version', version);
@@ -158,6 +164,9 @@ export class DynamoDBCommandBuilder {
 
         if (this.limit)
             result.Limit = this.limit;
+
+        if (this.nextToken)
+            result.ExclusiveStartKey = this.nextToken;
 
         return result;
     }
