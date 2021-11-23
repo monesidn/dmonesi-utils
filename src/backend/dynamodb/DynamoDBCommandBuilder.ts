@@ -120,6 +120,13 @@ export class DynamoDBCommandBuilder {
         return this;
     }
 
+    withVersionFilter(version: number) {
+        this.addFilter('#version = :expectedVersion');
+        this.withSimpleAttributeValue(':expectedVersion', version);
+        this.withAttributeName('#version', 'version');
+        return this;
+    }
+
     havingVersion(version: number) {
         this.addCondition('#version = :version');
         this.withSimpleAttributeValue(':version', version);
