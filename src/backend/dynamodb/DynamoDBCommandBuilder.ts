@@ -1,4 +1,4 @@
-import { AttributeValue, GetItemCommandInput } from '@aws-sdk/client-dynamodb';
+import { AttributeValue, DeleteItemCommandInput, GetItemCommandInput } from '@aws-sdk/client-dynamodb';
 import { QueryCommandInput, UpdateItemCommandInput } from '@aws-sdk/client-dynamodb';
 import { toDynamoDBList, toDynamoDBSet, toDynamoDBValue } from './toDynamoDBTypes';
 
@@ -176,5 +176,15 @@ export class DynamoDBCommandBuilder {
             result.ExclusiveStartKey = this.nextToken;
 
         return result;
+    }
+
+    toDeleteItem(): DeleteItemCommandInput {
+        return {
+            TableName: this.table,
+            Key: this.keyCriteria,
+            ConditionExpression: this.assembleExpression(this.conditionExpression),
+            ExpressionAttributeValues: this.attributeValues,
+            ExpressionAttributeNames: this.attributeNames
+        };
     }
 }
