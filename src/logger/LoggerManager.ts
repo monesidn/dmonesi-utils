@@ -1,3 +1,4 @@
+import { LogLevelByName } from '.';
 import { LogLevel } from './apis';
 import { assertConsoleNotHijacked, ConsoleHijacker } from './ConsoleHijacker';
 import { LoggerImpl } from './LoggerImpl';
@@ -92,7 +93,7 @@ class LoggerManager {
                 console.error(`Ignoring category specification ${cat}`);
                 continue;
             }
-            this.configureLevel(category, level.toUpperCase() as LogLevel);
+            this.configureLevel(category, LogLevelByName[level.toUpperCase()]);
             updated++;
         }
         if (updated > 0) {

@@ -2,11 +2,19 @@
  * Possible log levels.
  */
 export enum LogLevel {
-    OFF = 'OFF',
-    ERROR = 'ERROR',
-    WARN = 'WARN',
-    DEBUG = 'DEBUG',
-    TRACE = 'TRACE',
+    OFF,
+    ERROR,
+    WARN,
+    DEBUG,
+    TRACE
+};
+
+export const LogLevelByName: Record<string, LogLevel> = {
+    'OFF': LogLevel.OFF,
+    'ERROR': LogLevel.ERROR,
+    'WARN': LogLevel.WARN,
+    'DEBUG': LogLevel.DEBUG,
+    'TRACE': LogLevel.TRACE
 };
 
 /**
