@@ -8,7 +8,7 @@ import { ConsoleOutputDevice } from './OutputDevice';
  * Library entry point. This is a singleton object that is default exported by
  * the library.
  */
-class LoggerManager {
+class LoggerManagerClass {
     private consoleHijacker?: ConsoleHijacker;
 
     private output = new ConsoleOutputDevice();
@@ -119,4 +119,4 @@ class LoggerManager {
     }
 }
 
-export const loggerManager = new LoggerManager();
+export const LoggerManager = new LoggerManagerClass();
