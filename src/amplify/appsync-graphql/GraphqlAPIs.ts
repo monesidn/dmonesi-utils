@@ -25,6 +25,8 @@ export class GraphqlAPI {
 
     async query<T>(name: string, variables?: object): Promise<T> {
         const query = this.queries[name] as string;
+        if (!query) throw new Error(`Can't find a query named ${name}`);
+
         const result = await this.unwrapGraphQLResponse<T>(API.graphql({ query, variables }), name);
 
         if (result === undefined)
@@ -32,8 +34,10 @@ export class GraphqlAPI {
         return result;
     }
 
-    async mutation<T>(name: string, variables?: object): Promise<T> {
+    async mutation<T>(name: string, variables: object = {}): Promise<T> {
         const mutation = this.mutations[name] as string;
+        if (!mutation) throw new Error(`Can't find a query named ${name}`);
+
         const result = await this.unwrapGraphQLResponse<T>(API.graphql({ query: mutation, variables }), name);
 
         if (result === undefined)
@@ -41,7 +45,7 @@ export class GraphqlAPI {
         return result;
     };
 
-    async booleanMutation(name: string, variables?: object): Promise<boolean> {
+    async booleanMutation(name: string, variables: object = {}): Promise<boolean> {
         const result = this.mutation<boolean>(name, variables);
 
         if (!result) {

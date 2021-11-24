@@ -39,17 +39,5 @@
     "aws-amplify": "^4.3.6",
     "mobx": "^6.3.7"
   },
-  "main": "./dist/index.js",
-  "exports": {
-    ".": "./dist/index.js",
-    "./amplify": "./dist/amplify/index.js",
-    "./async": "./dist/async/index.js",
-    "./backend/dynamodb": "./dist/backend/dynamodb/index.js",
-    "./backend/lambda": "./dist/backend/lambda/index.js",
-    "./backend/streams": "./dist/backend/streams/index.js",
-    "./backend/cognito": "./dist/backend/cognito/index.js",
-    "./backend/s3": "./dist/backend/s3/index.js",
-    "./logger": "./dist/logger/index.js",
-    "./types": "./dist/types/index.js"
-  }
+  "main": "./dist/index.js"
 }
