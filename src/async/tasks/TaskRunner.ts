@@ -1,8 +1,8 @@
 import EventEmitter from 'events';
-import loggerManager from '../../logger';
+import { LoggerManager } from '../../logger';
 import { Task, TaskRunnerOptions } from './api';
 
-const log = loggerManager.getLogger('it.dmonesi.util.async.TaskRunner');
+const log = LoggerManager.getLogger('it.dmonesi.util.async.TaskRunner');
 
 const defaultOpts: TaskRunnerOptions = {
     maxConcurrentTask: 10

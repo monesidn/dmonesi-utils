@@ -1,6 +1,6 @@
-import loggerManager from '../../logger';
+import { LoggerManager } from '../../logger';
 
-const log = loggerManager.getLogger('aws.lambda.entrypoint');
+const log = LoggerManager.getLogger('aws.lambda.entrypoint');
 
 export interface EventWithField {
     field: string;
